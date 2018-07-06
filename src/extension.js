@@ -4,10 +4,10 @@ const vscode = require('vscode'),
 const statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
 
 // Функция для отображения данных в StatusBar
-function checkStatusBar(text) {
+function checkStatusBar(text, delay) {
     statusBar.text = text;
     statusBar.show();
-    setTimeout(() => statusBar.hide(), 2000);
+    setTimeout(() => statusBar.hide(), delay);
 }
 
 function activate(context) {
@@ -26,6 +26,8 @@ function activate(context) {
       astylerc = configuration.astylerc,
       // Расположение программы astyle
       astyle = configuration.astyle,
+      // Время, которое будет показываться сообщение
+      delay = configuration.messageTimeout,
       // Функция, для выполнения форматирования
       aformatFunc = () => {
           let command = astyle + ' ';
@@ -34,7 +36,7 @@ function activate(context) {
           }
           command += currentFilePath;
           childProcess.exec(command, (error, out, err) => {
-              checkStatusBar('$(pencil) Formatted');
+              checkStatusBar('$(pencil) Formatted', delay);
               if (showMessages) {
                   vscode.window.showInformationMessage(
                       error ? 'Some error while formatting: ' + err : 'Formatted!'

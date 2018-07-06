@@ -43,3 +43,9 @@ Now you can set next settings in your __.vscode/settings.json__ file:
 - Remove some rules in __.eslintrc.js__ for comfortable work
 - Add editorconfig
 - Migrate to new repository
+- Added new preference - `astyleFormat.messageTimeout`
+
+### Needle
+
+- Check work with `editor/context menu` in package.json for add point in context menu
+- Translate description in english!

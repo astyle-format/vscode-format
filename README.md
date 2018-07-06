@@ -12,6 +12,7 @@ This extension contributes the following settings:
 
 * `astyleFormat.show-message`: Show message when formatting. By default is __true__
 * `astyleFormat.astylerc`: Where is file __.astylerc__. By default is __null__ (it means that file __.astylerc__ exist in your __HOME__ folder)
+* `astyleFormat.messageTimeout`: Delay for hide message about formatting
 
 ## Known Issues
 
