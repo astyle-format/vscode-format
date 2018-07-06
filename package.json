@@ -55,6 +55,11 @@
           "type": "string",
           "default": "astyle",
           "description": "Расположение программы astyle. По умолчанию берется 'astlye'"
+        },
+        "astyleFormat.messageTimeout": {
+          "type": "number",
+          "default": 2000,
+          "description": "Время показа сообщения, что отредактировано"
         }
       }
     }
