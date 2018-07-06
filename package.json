@@ -1,73 +1,73 @@
 {
-    "name": "format-astyle",
-    "displayName": "format-astyle",
-    "description": "Format C/C++ files with astyle",
-    "version": "1.1.1",
-    "publisher": "WiRight",
-    "license": "MIT",
-    "engines": {
-        "vscode": "^1.24.1"
-    },
-    "categories": [
-        "Other"
+  "name": "format-astyle",
+  "displayName": "format-astyle",
+  "description": "Format C/C++ files with astyle",
+  "version": "1.1.1",
+  "publisher": "WiRight",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.24.1"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.aformat"
+  ],
+  "main": "./src/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.aformat",
+        "title": "AStyleFormat"
+      }
     ],
-    "activationEvents": [
-        "onCommand:extension.aformat"
+    "keybindings": [
+      {
+        "key": "ctrl+alt+l",
+        "command": "extension.aformat"
+      }
     ],
-    "main": "./src/extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "extension.aformat",
-                "title": "AStyleFormat"
-            }
-        ],
-        "keybindings": [
-            {
-                "key": "ctrl+alt+l",
-                "command": "extension.aformat"
-            }
-        ],
-        "menus": {
-            "editor/context": [
-                {
-                    "when": "resourceLangId == c++",
-                    "command": "extension.aformat",
-                    "group": "WiRightGroup@1"
-                }
-            ]
-        },
-        "configuration": {
-            "type": "object",
-            "title": "AStyleFormat configuration",
-            "properties": {
-                "astyleFormat.show-message": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Показывать сообщения при форматировании"
-                },
-                "astyleFormat.astylerc": {
-                    "type": "string",
-                    "default": null,
-                    "description": "Путь до файла с настройками"
-                },
-                "astyleFormat.astyle": {
-                    "type": "string",
-                    "default": "astyle",
-                    "description": "Расположение программы astyle. По умолчанию берется 'astlye'"
-                }
-            }
+    "menus": {
+      "editor/context": [
+        {
+          "when": "resourceLangId == c++",
+          "command": "extension.aformat",
+          "group": "WiRightGroup@1"
         }
+      ]
     },
-    "scripts": {
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.6",
-        "eslint": "^4.11.0",
-        "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
+    "configuration": {
+      "type": "object",
+      "title": "AStyleFormat configuration",
+      "properties": {
+        "astyleFormat.show-message": {
+          "type": "boolean",
+          "default": true,
+          "description": "Показывать сообщения при форматировании"
+        },
+        "astyleFormat.astylerc": {
+          "type": "string",
+          "default": null,
+          "description": "Путь до файла с настройками"
+        },
+        "astyleFormat.astyle": {
+          "type": "string",
+          "default": "astyle",
+          "description": "Расположение программы astyle. По умолчанию берется 'astlye'"
+        }
+      }
     }
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.1",
+    "vscode": "^1.1.6",
+    "eslint": "^4.11.0",
+    "@types/node": "^7.0.43",
+    "@types/mocha": "^2.2.42"
+  }
 }
