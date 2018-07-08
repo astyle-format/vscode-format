@@ -2,6 +2,16 @@
 
 Format code with AStyle
 
+<center>
+
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/astyle-format/vscode-format.svg)](http://isitmaintained.com/project/astyle-format/vscode-format "Average time to resolve an issue")
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/astyle-format/vscode-format.svg)](http://isitmaintained.com/project/astyle-format/vscode-format "Percentage of issues still open")
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/astyle-format/vscode-format/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/astyle-format/vscode-format/)
+[![Code Coverage](https://scrutinizer-ci.com/g/astyle-format/vscode-format/badges/coverage.png)](https://scrutinizer-ci.com/g/astyle-format/vscode-format/)
+[![Code intelligence](https://scrutinizer-ci.com/g/astyle-format/vscode-format/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/g/astyle-format/vscode-format/)
+
+</center>
+
 ## Requirements
 
 If you have any requirements or dependencies, add a section describing those and how to install and configure them.
