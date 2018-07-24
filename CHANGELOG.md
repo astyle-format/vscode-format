@@ -56,3 +56,9 @@ Now you can set next settings in your __.vscode/settings.json__ file:
 
 - Translate into english
 - Remove tests. It will recreated in future!
+- Add menu point in context menu of file which cpp and title
+- For mac add keybinding __cmd+alt+l__
+
+### Needle
+
+- Check astyle prog

@@ -19,6 +19,7 @@ sudo apt install astyle
 ## How to use
 
 For format document you need to click __CTRL+ALT+L__ combination (just like in *IDEA Studio*) in opened, and saved document in HDD.
+For Mac __CMD+ALT+L__ (i don't have a MacBook...)
 
 ## Extension Settings
 
