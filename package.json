@@ -31,9 +31,16 @@
     "menus": {
       "editor/context": [
         {
-          "when": "resourceLangId == c++",
+          "when": "resourceLangId == cpp",
           "command": "extension.aformat",
-          "group": "WiRightGroup@1"
+          "group": "Форматировать Astyle@1"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "when": "resourceLangId == cpp",
+          "command": "extension.aformat",
+          "group": "Форматировать Astyle@1"
         }
       ]
     },

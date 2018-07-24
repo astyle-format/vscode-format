@@ -49,3 +49,10 @@ Now you can set next settings in your __.vscode/settings.json__ file:
 
 - Check work with `editor/context menu` in package.json for add point in context menu
 - Translate description in english!
+
+## [1.1.3] - 09.07.2018
+
+### Added
+
+- Translate into english
+- Remove tests. It will recreated in future!
