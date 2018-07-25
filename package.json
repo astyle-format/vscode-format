@@ -2,14 +2,35 @@
   "name": "format-astyle",
   "displayName": "format-astyle",
   "description": "Format C/C++ files with astyle",
-  "version": "1.1.2",
+  "icon": "images/logo.png",
+  "version": "1.1.4",
   "publisher": "DIZOFT",
   "license": "MIT",
   "engines": {
     "vscode": "^1.24.1"
   },
+  "author": {
+    "email": "ruslan.mahin1@gmail.com",
+    "name": "Ruslan Makhin (WiRight)"
+  },
+  "maintainers": [
+    {
+      "email": "ruslan.mahin1@gmail.com",
+      "name": "Ruslan Makhin (WiRight)"
+    }
+  ],
+  "galleryBanner": {
+    "color": "#C80000",
+    "theme": "dark"
+  },
   "categories": [
-    "Other"
+    "Formatters"
+  ],
+  "keywords": [
+    "astyle",
+    "c",
+    "c++",
+    "format"
   ],
   "activationEvents": [
     "onCommand:extension.aformat"
