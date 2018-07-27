@@ -1,9 +1,12 @@
 const vscode = require('vscode'),
   childProcess = require('child_process');
 
+// Global vars
+
+// Status bar
 const statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
 
-// Функция для отображения данных в StatusBar
+// Show message in StatusBar
 function checkStatusBar(text, delay) {
     statusBar.text = text;
     statusBar.show();
@@ -12,23 +15,23 @@ function checkStatusBar(text, delay) {
 
 function activate(context) {
   const disposable = vscode.commands.registerCommand('extension.aformat', function () {
-    // Получаем текущий редактор
+    // Get current editor
     const activeTextEditor = vscode.window.activeTextEditor,
-      // Текущий документ
+      // Current document
       document = activeTextEditor.document,
-      // Путь до текущего файла, с которым работаем
+      // Path to current file
       currentFilePath = document.fileName,
-      // Показывать ли сообщения
+      // Get extension configuration
       configuration = vscode.workspace.getConfiguration('astyleFormat'),
-      // Показывать ли сообщения о форматировании
+      // Config: show message box about formatting
       showMessages = configuration['show-message'],
-      // Нахождение файла .astylerc
+      // Where is .astylerc file
       astylerc = configuration.astylerc,
-      // Расположение программы astyle
+      // Where is astyle program
       astyle = configuration.astyle,
-      // Время, которое будет показываться сообщение
+      // Timeout for message box
       delay = configuration.messageTimeout,
-      // Функция, для выполнения форматирования
+      // Format function
       aformatFunc = () => {
           let command = astyle + ' ';
           if (astylerc) {
@@ -44,14 +47,14 @@ function activate(context) {
               }
           });
       };
-      // Если есть какие-либо изменения
+      // If document is editing now
       if (document.isDirty) {
-          // То сохраняем документ и форматируем
+          // Then save the document and make format
           document.save().then(() => {
               aformatFunc();
           });
       } else {
-          // Если изменений нет, то просто форматируем
+          // Also just formatting
           aformatFunc();
       }
   });
@@ -60,5 +63,6 @@ function activate(context) {
 exports.activate = activate;
 
 // this method is called when your extension is deactivated
-function deactivate() {}
+function deactivate() { }
+
 exports.deactivate = deactivate;
