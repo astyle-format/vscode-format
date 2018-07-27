@@ -8,9 +8,9 @@ const statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Le
 
 // Show message in StatusBar
 function checkStatusBar(text, delay) {
-    statusBar.text = text;
-    statusBar.show();
-    setTimeout(() => statusBar.hide(), delay);
+  statusBar.text = text;
+  statusBar.show();
+  setTimeout(() => statusBar.hide(), delay);
 }
 
 function activate(context) {
@@ -33,36 +33,59 @@ function activate(context) {
       delay = configuration.messageTimeout,
       // Format function
       aformatFunc = () => {
-          let command = astyle + ' ';
-          if (astylerc) {
-              command += ' --option=' + astylerc;
+        let command = astyle + ' ';
+        if (astylerc) {
+          command += ' --option=' + astylerc;
+        }
+        command += currentFilePath;
+        childProcess.exec(command, (error, out, err) => {
+          checkStatusBar('$(pencil) Formatted', delay);
+          if (showMessages) {
+            vscode.window.showInformationMessage(
+              error ? 'Some error while formatting: ' + err : 'Formatted!'
+            );
           }
-          command += currentFilePath;
-          childProcess.exec(command, (error, out, err) => {
-              checkStatusBar('$(pencil) Formatted', delay);
-              if (showMessages) {
-                  vscode.window.showInformationMessage(
-                      error ? 'Some error while formatting: ' + err : 'Formatted!'
-                  );
-              }
-          });
-      };
-      // If document is editing now
-      if (document.isDirty) {
-          // Then save the document and make format
-          document.save().then(() => {
-              aformatFunc();
-          });
-      } else {
-          // Also just formatting
+        });
+      },
+      // Check for installed astyle on pc
+      checkAstyle = () => new Promise((resolve, reject) => {
+        childProcess.exec('whereis astyle', (error, out) => {
+          const path = out.length === '' ? '' : out.slice(7).split(' ').filter((it) => it !== '');
+          if (path && path[0]) {
+            resolve(path[0]);
+          } else {
+            reject();
+          }
+        });
+      });
+    // If document is editing now
+    if (document.isDirty) {
+      // Then save the document and make format
+      document.save().then(() => {
+        checkAstyle().then(() => {
           aformatFunc();
-      }
+        }).catch(() => {
+          vscode.window.showInformationMessage(
+            'AStyle not detected on your machine! Please, install astyle before formatting!'
+          );
+        });
+      });
+    } else {
+      // Else just formatting
+      checkAstyle().then(() => {
+        aformatFunc();
+      }).catch(() => {
+        vscode.window.showInformationMessage(
+          'AStyle not detected on your machine! Please, install astyle before formatting!'
+        );
+      });
+    }
   });
   context.subscriptions.push(disposable);
 }
 exports.activate = activate;
 
 // this method is called when your extension is deactivated
-function deactivate() { }
+function deactivate() {}
 
 exports.deactivate = deactivate;

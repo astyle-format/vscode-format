@@ -3,7 +3,7 @@
   "displayName": "format-astyle",
   "description": "Format C/C++ files with astyle",
   "icon": "images/logo.png",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "publisher": "DIZOFT",
   "license": "MIT",
   "engines": {
@@ -20,7 +20,7 @@
     }
   ],
   "galleryBanner": {
-    "color": "#C80000",
+    "color": "#2a4153",
     "theme": "dark"
   },
   "categories": [
@@ -104,8 +104,7 @@
     }
   },
   "scripts": {
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "node ./node_modules/vscode/bin/test"
+    "postinstall": "node ./node_modules/vscode/bin/install"
   },
   "devDependencies": {
     "typescript": "^2.6.1",
