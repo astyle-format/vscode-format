@@ -62,3 +62,19 @@ Now you can set next settings in your __.vscode/settings.json__ file:
 ### Needle
 
 - Check astyle prog
+
+## [1.1.4] - 26.07.2018
+
+### Added
+
+- icon
+
+## [1.1.5] - 27.07.2018
+
+### Added
+
+- Check astyle for installed on machine!
+
+### Needle
+
+- Check for __.astylerc__ file

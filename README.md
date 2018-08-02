@@ -2,8 +2,10 @@
 
 Format code with AStyle
 
-[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/astyle-format/vscode-format.svg)](http://isitmaintained.com/project/astyle-format/vscode-format "Average time to resolve an issue")
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/astyle-format/vscode-format.svg)](http://isitmaintained.com/project/astyle-format/vscode-format "Percentage of issues still open")
+[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/astyle-format/vscode-format.svg)](http://isitmaintained.com/project/astyle-format/vscode-format "Average time to resolve an issue")
+[![Percentage of issues still open](https://isitmaintained.com/badge/open/astyle-format/vscode-format.svg)](http://isitmaintained.com/project/astyle-format/vscode-format "Percentage of issues still open")
+
+***
 
 ## Requirements
 
@@ -16,9 +18,12 @@ sudo apt install astyle
 
 > But remember, in repository may have older version!
 
+The best way - build app using [cmake](https://cmake.org)
+
 ## How to use
 
 For format document you need to click __CTRL+ALT+L__ combination (just like in *IDEA Studio*) in opened, and saved document in HDD.
+
 For Mac __CMD+ALT+L__ (i don't have a MacBook...)
 
 ## Extension Settings
@@ -31,6 +36,5 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-* If astyle is not installed in system - format will not be succeed
 * Need to check for __.astylerc__ file
 * If docuemnt not existst in HDD, format will not be proceed
