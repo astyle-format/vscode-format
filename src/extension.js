@@ -59,10 +59,17 @@ function activate(context) {
           : 'where astyle.exe';
 
         childProcess.exec(command, (error, out) => {
-          const path = out.length === ''
-            ? ''
-            // TODO: check response from Windows
-            : out.slice(7).split(' ').filter(it => it !== '');
+          let path;
+
+          if (process.platform === 'win32') {
+            path = out.split('\r\n');
+          }
+
+          if (process.platform === 'linux') {
+            path = out.length === ''
+              ? ''
+              : out.slice(7).split(' ').filter(it => it !== '');
+          }
 
           if (path && path[0]) {
             resolve(path[0]);
