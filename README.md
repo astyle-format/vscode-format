@@ -29,9 +29,9 @@ The best way - build app using [cmake](https://cmake.org)
 
 * Download source from [sourceforge](http://astyle.sourceforge.net)
 * Extract archive
-* Put `bin/astyle.exe` into your bin path or add current folder path to your env `PATH`
-
-Make sure, that shell command `where astyle.exe` work correctly!
+* Put `bin/AStyle.exe` into your bin path or add current folder path to your env `PATH`
+* In settings set where is astyle -> `AStyle.exe` (it means that you add folder __bin__ into `PATH` and this contains program named `AStyle.exe`)
+* Put `astylerc` file with astyle options into `%APPDATA%\astylerc`
 
 ## How to use
 
@@ -49,5 +49,11 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-* Need to check for __.astylerc__ file
-* If document not exists, format will not be proceed
+* All
+    * Need to check for __.astylerc__ file
+    * If document not exists, format will not be proceed
+    * Try find astylerc file into current project (in root dir)
+
+* Windows
+    * Add set custom astylerc file
+

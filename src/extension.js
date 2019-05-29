@@ -39,7 +39,7 @@ function activate(context) {
           command += ' --option=' + astylerc;
         }
 
-        command += currentFilePath;
+        command += ' ' + currentFilePath;
 
         childProcess.exec(command, (error, out, err) => {
           checkStatusBar('$(pencil) Formatted', delay);
@@ -54,29 +54,27 @@ function activate(context) {
       },
       // Check for installed astyle on pc
       checkAStyle = () => new Promise((resolve, reject) => {
-        const command = process.platform === 'linux'
-          ? 'whereis astyle'
-          : 'where astyle.exe';
+        if (astyle.length > 0) {
+          resolve(astyle);
+        }
 
-        childProcess.exec(command, (error, out) => {
-          let path = '';
-
-          if (process.platform === 'win32') {
-            path = out.split('\r\n');
-          }
-
-          if (process.platform === 'linux') {
-            path = out.length === ''
+        if (process.platform === 'linux') {
+          childProcess.exec(command, (error, out) => {
+            const path = out.length === ''
               ? ''
               : out.slice(7).split(' ').filter((it) => it !== '');
-          }
 
-          if (path && path[0]) {
-            resolve(path[0]);
-          } else {
-            reject();
-          }
-        });
+            if (path && path[0]) {
+              resolve(path[0]);
+            } else {
+              reject();
+            }
+          });
+        }
+
+        if (process.platform === 'win32') {
+          resolve('AStyle.exe');
+        }
       });
     // If document is editing now
     if (document.isDirty) {
