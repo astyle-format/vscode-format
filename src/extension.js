@@ -58,8 +58,9 @@ function activate(context) {
           resolve(astyle);
         }
 
+        // For *Linux try find program location
         if (process.platform === 'linux') {
-          childProcess.exec(command, (error, out) => {
+          childProcess.exec('whereis astyle', (error, out) => {
             const path = out.length === ''
               ? ''
               : out.slice(7).split(' ').filter((it) => it !== '');
@@ -72,6 +73,10 @@ function activate(context) {
           });
         }
 
+        /**
+         * For Windows always get AStyle.exe
+         * TODO: Fix in future
+         */
         if (process.platform === 'win32') {
           resolve('AStyle.exe');
         }
