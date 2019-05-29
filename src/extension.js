@@ -59,7 +59,7 @@ function activate(context) {
           : 'where astyle.exe';
 
         childProcess.exec(command, (error, out) => {
-          let path;
+          let path = '';
 
           if (process.platform === 'win32') {
             path = out.split('\r\n');
@@ -68,7 +68,7 @@ function activate(context) {
           if (process.platform === 'linux') {
             path = out.length === ''
               ? ''
-              : out.slice(7).split(' ').filter(it => it !== '');
+              : out.slice(7).split(' ').filter((it) => it !== '');
           }
 
           if (path && path[0]) {
