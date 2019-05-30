@@ -9,8 +9,13 @@ Format code with AStyle
 
 ## Requirements
 
-You need to install [http://astyle.sourceforge.net/](AStyle)
-Check install page or, if you on deb system, try
+You need to install [AStyle](http://astyle.sourceforge.net/)
+
+### Installation
+
+#### Debian
+
+If you on *.debian systems, try
 
 ```bash
 sudo apt install astyle
@@ -19,6 +24,24 @@ sudo apt install astyle
 > But remember, in repository may have older version!
 
 The best way - build app using [cmake](https://cmake.org)
+
+Common way to build using cmake
+
+```bash
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+```
+
+#### Windows
+
+* Download source from [sourceforge](http://astyle.sourceforge.net)
+* Extract archive
+* Put `bin/AStyle.exe` into your bin path or add current folder path to your env `PATH`
+* In settings set where is astyle -> `AStyle.exe` (it means that you add folder __bin__ into `PATH` and this contains program named `AStyle.exe`)
+* Put `astylerc` file with astyle options into `%APPDATA%\astylerc`
 
 ## How to use
 
@@ -36,5 +59,11 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-* Need to check for __.astylerc__ file
-* If docuemnt not existst in HDD, format will not be proceed
+* All
+    * Need to check for __.astylerc__ file
+    * If document not exists, format will not be proceed
+    * Try find astylerc file into current project (in root dir)
+
+* Windows
+    * Add set custom astylerc file
+

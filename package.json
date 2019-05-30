@@ -3,7 +3,7 @@
   "displayName": "format-astyle",
   "description": "Format C/C++ files with astyle",
   "icon": "images/logo.png",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "publisher": "DIZOFT",
   "license": "MIT",
   "engines": {
@@ -92,8 +92,8 @@
         },
         "astyleFormat.astyle": {
           "type": "string",
-          "default": "astyle",
-          "description": "Where is astyle"
+          "default": null,
+          "description": "Where is astyle program location"
         },
         "astyleFormat.messageTimeout": {
           "type": "number",

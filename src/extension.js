@@ -32,38 +32,62 @@ function activate(context) {
       // Timeout for message box
       delay = configuration.messageTimeout,
       // Format function
-      aformatFunc = () => {
+      formatFunc = () => {
         let command = astyle + ' ';
+
         if (astylerc) {
           command += ' --option=' + astylerc;
         }
-        command += currentFilePath;
+
+        command += ' ' + currentFilePath;
+
         childProcess.exec(command, (error, out, err) => {
           checkStatusBar('$(pencil) Formatted', delay);
+
           if (showMessages) {
             vscode.window.showInformationMessage(
               error ? 'Some error while formatting: ' + err : 'Formatted!'
             );
           }
+
         });
       },
       // Check for installed astyle on pc
-      checkAstyle = () => new Promise((resolve, reject) => {
-        childProcess.exec('whereis astyle', (error, out) => {
-          const path = out.length === '' ? '' : out.slice(7).split(' ').filter((it) => it !== '');
-          if (path && path[0]) {
-            resolve(path[0]);
-          } else {
-            reject();
-          }
-        });
+      checkAStyle = () => new Promise((resolve, reject) => {
+        // If user set custom location
+        if (astyle.length > 0) {
+          resolve(astyle);
+        }
+
+        // For *Linux try find program location
+        if (process.platform === 'linux') {
+          childProcess.exec('whereis astyle', (error, out) => {
+            const path = out.length === ''
+              ? ''
+              : out.slice(7).split(' ').filter((it) => it !== '');
+
+            if (path && path[0]) {
+              resolve(path[0]);
+            } else {
+              reject();
+            }
+          });
+        }
+
+        /**
+         * For Windows always get AStyle.exe
+         * TODO: Fix in future
+         */
+        if (process.platform === 'win32') {
+          resolve('AStyle.exe');
+        }
       });
     // If document is editing now
     if (document.isDirty) {
       // Then save the document and make format
       document.save().then(() => {
-        checkAstyle().then(() => {
-          aformatFunc();
+        checkAStyle().then(() => {
+          formatFunc();
         }).catch(() => {
           vscode.window.showInformationMessage(
             'AStyle not detected on your machine! Please, install astyle before formatting!'
@@ -72,8 +96,8 @@ function activate(context) {
       });
     } else {
       // Else just formatting
-      checkAstyle().then(() => {
-        aformatFunc();
+      checkAStyle().then(() => {
+        formatFunc();
       }).catch(() => {
         vscode.window.showInformationMessage(
           'AStyle not detected on your machine! Please, install astyle before formatting!'
@@ -83,9 +107,10 @@ function activate(context) {
   });
   context.subscriptions.push(disposable);
 }
+
 exports.activate = activate;
 
 // this method is called when your extension is deactivated
-function deactivate() {}
+function deactivate() { }
 
 exports.deactivate = deactivate;
