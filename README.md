@@ -25,6 +25,16 @@ sudo apt install astyle
 
 The best way - build app using [cmake](https://cmake.org)
 
+Common way to build using cmake
+
+```bash
+mkdir build
+cd build
+cmake ..
+make
+sudo make install
+```
+
 #### Windows
 
 * Download source from [sourceforge](http://astyle.sourceforge.net)

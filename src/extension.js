@@ -54,6 +54,7 @@ function activate(context) {
       },
       // Check for installed astyle on pc
       checkAStyle = () => new Promise((resolve, reject) => {
+        // If user set custom location
         if (astyle.length > 0) {
           resolve(astyle);
         }
