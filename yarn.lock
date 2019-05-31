@@ -1298,9 +1298,9 @@ verror@1.10.0:
     extsprintf "^1.2.0"
 
 vscode-test@^0.4.1:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/vscode-test/-/vscode-test-0.4.2.tgz#1f4a8582db423cb64456aa1f577d9156a1db1299"
-  integrity sha512-ZqSh1WNQ1It3SVLnuDMS3HmadM86k2dXvv4ZtdT6+ezxZ1NIQRTbE5SZroV0EvIf5KGjhYNbj5HHqUjBsGjV6Q==
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/vscode-test/-/vscode-test-0.4.3.tgz#461ebf25fc4bc93d77d982aed556658a2e2b90b8"
+  integrity sha512-EkMGqBSefZH2MgW65nY05rdRSko15uvzq4VAPM5jVmwYuFQKE7eikKXNJDRxL+OITXHB6pI+a3XqqD32Y3KC5w==
   dependencies:
     http-proxy-agent "^2.1.0"
     https-proxy-agent "^2.2.1"
