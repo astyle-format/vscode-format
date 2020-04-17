@@ -36,7 +36,7 @@ function activate(context) {
         let command = astyle + ' ';
 
         if (astylerc) {
-          command += ' --option=' + astylerc;
+          command += ' --options=' + astylerc;
         }
 
         command += ' ' + currentFilePath;
@@ -49,7 +49,6 @@ function activate(context) {
               error ? 'Some error while formatting: ' + err : 'Formatted!'
             );
           }
-
         });
       },
       // Check for installed astyle on pc
@@ -69,7 +68,7 @@ function activate(context) {
             if (path && path[0]) {
               resolve(path[0]);
             } else {
-              reject();
+              reject(error);
             }
           });
         }
